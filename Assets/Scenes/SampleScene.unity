@@ -677,7 +677,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -896,6 +896,35 @@ MonoBehaviour:
   m_TrackingType: 0
   m_UpdateType: 0
   m_UseRelativeTransform: 0
+--- !u!1 &1780598546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd,
+    type: 3}
+  m_PrefabInstance: {fileID: 947067834}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1780598552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780598546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e38beb2ab16fc44ab96723dce2887e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHP: 0
+  attackSpellPrefab: {fileID: 4613098698363755859, guid: 9e7f98c988504654b8e51a9b92622343,
+    type: 3}
+  firstSpellPrefab: {fileID: 0}
+  secondSpellPrefab: {fileID: 0}
+  currentAttackSpellCooldown: 0
+  currentFirstSpellCooldown: 0
+  currentSecondSpellCooldown: 0
+  maxAttackSpellCooldown: 0
+  maxFirstSpellCooldown: 0
+  maxSecondSpellCooldown: 0
 --- !u!1001 &1934505122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -988,6 +1017,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 460950047295022125, guid: 5ccf3d92dfe58f84e8a49c4a72854860,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1034220237044390347, guid: 5ccf3d92dfe58f84e8a49c4a72854860,
         type: 3}
       propertyPath: m_RootOrder
@@ -996,17 +1030,17 @@ PrefabInstance:
     - target: {fileID: 1034220237044390347, guid: 5ccf3d92dfe58f84e8a49c4a72854860,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.01708585
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1034220237044390347, guid: 5ccf3d92dfe58f84e8a49c4a72854860,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5000019
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1034220237044390347, guid: 5ccf3d92dfe58f84e8a49c4a72854860,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.091
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1034220237044390347, guid: 5ccf3d92dfe58f84e8a49c4a72854860,
         type: 3}
