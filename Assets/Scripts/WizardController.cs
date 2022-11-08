@@ -61,7 +61,8 @@ public class WizardController : MonoBehaviour
         if (attackSpellPrefab.GetComponent<Spell>().isActive)
         {
             currentAttackSpellCooldown = maxAttackSpellCooldown;
-            Instantiate(attackSpellPrefab,gameObject.transform);
+            Transform coor = gameObject.transform;
+            Instantiate(attackSpellPrefab, new Vector3(coor.position.x, coor.position.y, coor.position.z),Quaternion.identity);
         }
     }
 }
