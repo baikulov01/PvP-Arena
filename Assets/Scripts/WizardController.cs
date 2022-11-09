@@ -62,7 +62,7 @@ public class WizardController : MonoBehaviour
         {
             currentAttackSpellCooldown = maxAttackSpellCooldown;
             Transform coor = gameObject.transform;
-            Instantiate(attackSpellPrefab, new Vector3(coor.position.x, coor.position.y, coor.position.z),Quaternion.identity);
+            Instantiate(attackSpellPrefab, new Vector3(coor.position.x, coor.position.y, coor.position.z), gameObject.transform.rotation);
         }
     }
 }
