@@ -29,7 +29,7 @@ public class WizardController : MonoBehaviour
     {
         currentHP = maxHP;
         //maxAttackSpellCooldown = attackSpell.cooldown;
-        maxAttackSpellCooldown = 5.0f;
+        maxAttackSpellCooldown = 1.0f;
         //maxFirstSpellCooldown = firstSpell.cooldown;
         //maxSecondSpellCooldown = secondSpell.cooldown;
 
@@ -50,10 +50,16 @@ public class WizardController : MonoBehaviour
         } 
         else attackSpellPrefab.GetComponent<Spell>().isActive = true; 
 
-        if (currentAttackSpellCooldown <= 0)
+
+        if (OVRInput.Get(OVRInput.Button.One) || Input.GetMouseButton(0))
         {
-            CastAttackSpell();
+            if (currentAttackSpellCooldown <= 0)
+            {
+                CastAttackSpell();
+            }
         }
+
+        
     }
 
     public void CastAttackSpell()
