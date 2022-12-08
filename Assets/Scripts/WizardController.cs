@@ -24,8 +24,8 @@ public class WizardController : MonoBehaviour
     public float currentFirstSpellCooldown;
     public float currentSecondSpellCooldown;
 
-    public float maxAttackSpellCooldown;
-    public float maxFirstSpellCooldown;
+    public float maxAttackSpellCooldown = 1.0f;
+    public float maxFirstSpellCooldown = 2.0f;
     public float maxSecondSpellCooldown;
     // Start is called before the first frame update
     void Start()
@@ -34,7 +34,6 @@ public class WizardController : MonoBehaviour
         healthBar.SetMaxHealth(maxHP);
 
         //maxAttackSpellCooldown = attackSpell.cooldown;
-        maxAttackSpellCooldown = 1.0f;
         //maxFirstSpellCooldown = firstSpell.cooldown;
         //maxSecondSpellCooldown = secondSpell.cooldown;
 
@@ -56,7 +55,7 @@ public class WizardController : MonoBehaviour
         else attackSpellPrefab.GetComponent<Spell>().isActive = true; 
 
 
-        if (OVRInput.Get(OVRInput.Button.One) || Input.GetMouseButton(0))
+        if (OVRInput.Get(OVRInput.RawButton.A) || Input.GetMouseButton(0))
         {
             if (currentAttackSpellCooldown <= 0)
             {
@@ -64,7 +63,24 @@ public class WizardController : MonoBehaviour
             }
         }
 
-        
+
+        if (currentFirstSpellCooldown > 0.0f)
+        {
+            currentFirstSpellCooldown -= Time.deltaTime;
+            firstSpellPrefab.GetComponent<Spell>().isActive = false;
+        }
+        else firstSpellPrefab.GetComponent<Spell>().isActive = true;
+
+
+        if (OVRInput.Get(OVRInput.RawButton.B) || Input.GetMouseButton(1))
+        {
+            if (currentFirstSpellCooldown <= 0)
+            {
+                CastFirstSpell();
+            }
+        }
+
+
     }
 
     //нужно добавить: когда мы получаем урон, обновлять health bar 
@@ -77,6 +93,15 @@ public class WizardController : MonoBehaviour
             currentAttackSpellCooldown = maxAttackSpellCooldown;
             Transform coor = gameObject.transform;
             Instantiate(attackSpellPrefab, new Vector3(coor.position.x, coor.position.y, coor.position.z), gameObject.transform.rotation);
+        }
+    }
+    public void CastFirstSpell()
+    {
+        if (firstSpellPrefab.GetComponent<Spell>().isActive)
+        {
+            currentFirstSpellCooldown = maxFirstSpellCooldown;
+            Transform coor = gameObject.transform;
+            Instantiate(firstSpellPrefab, new Vector3(coor.position.x, coor.position.y, coor.position.z), gameObject.transform.rotation);
         }
     }
 }
