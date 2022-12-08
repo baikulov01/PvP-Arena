@@ -57,9 +57,7 @@ public class WizardController : MonoBehaviour
             {
                 CastAttackSpell();
             }
-        }
-
-        
+        }        
     }
 
     public void CastAttackSpell()

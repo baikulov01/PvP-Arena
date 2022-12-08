@@ -16,7 +16,6 @@ public class FireBallSpell : Spell
     void Update()
     {
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-        
     }
     private void OnTriggerEnter(Collider other)
     {
