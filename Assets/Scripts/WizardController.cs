@@ -8,6 +8,9 @@ public class WizardController : MonoBehaviour
 
     public int currentHP;
 
+    //add health bar
+    public HealthBar healthBar;
+
 
     //public Spell attackSpell;
     //public Spell firstSpell;
@@ -28,6 +31,8 @@ public class WizardController : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
+        healthBar.SetMaxHealth(maxHP);
+
         //maxAttackSpellCooldown = attackSpell.cooldown;
         maxAttackSpellCooldown = 1.0f;
         //maxFirstSpellCooldown = firstSpell.cooldown;
@@ -61,6 +66,9 @@ public class WizardController : MonoBehaviour
 
         
     }
+
+    //нужно добавить: когда мы получаем урон, обновлять health bar 
+    //healthBar.SetHealth(currentHP);
 
     public void CastAttackSpell()
     {
