@@ -67,7 +67,7 @@ public class WizardController : MonoBehaviour
         
     }
 
-    //нужно добавить: когда мы получаем урон, обновлять health bar 
+    //РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ: РєРѕРіРґР° РјС‹ РїРѕР»СѓС‡Р°РµРј СѓСЂРѕРЅ, РѕР±РЅРѕРІР»СЏС‚СЊ health bar 
     //healthBar.SetHealth(currentHP);
 
     public void CastAttackSpell()
