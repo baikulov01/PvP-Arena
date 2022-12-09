@@ -578,7 +578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   isActive: 1
-  moveSpeed: 3.5
+  moveSpeed: 5
   damage: 10
 --- !u!54 &601782229447395811
 Rigidbody:

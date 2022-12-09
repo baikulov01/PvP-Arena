@@ -53,13 +53,14 @@ public class WizardController : MonoBehaviour
         //currentAttackSpellCooldown = maxAttackSpellCooldown;
         //currentFirstSpellCooldown = maxFirstSpellCooldown;
         //currentSecondSpellCooldown = maxSecondSpellCooldown;
-        Debug.Log(transform.position);
-        CastAttackSpell();
+        //Debug.Log(transform.position);
+        //CastAttackSpell();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //healthBar.SetHealth(currentHP);
         if (currentAttackSpellCooldown > 0.0f)
         {
             currentAttackSpellCooldown -= Time.deltaTime;

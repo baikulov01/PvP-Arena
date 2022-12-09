@@ -7,6 +7,7 @@ public class Spell : MonoBehaviour
 
     public float cooldown;
     public bool isActive = true;
+    public int damage;
     
     // Start is called before the first frame update
     void Start()
@@ -20,5 +21,18 @@ public class Spell : MonoBehaviour
         
     }
 
-    
+    public virtual void OnTriggerEnter(Collider other)
+    {
+
+        if (other.tag == "Enemy")
+        {
+            WizardController wizard = other.GetComponent<WizardController>();
+
+            wizard.currentHP -= damage;
+
+            //Destroy(gameObject);
+        }
+    }
+
+
 }

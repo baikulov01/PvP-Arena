@@ -18,14 +18,24 @@ public class FireBallSpell : Spell
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         
     }
-    private void OnTriggerEnter(Collider other)
+
+    public virtual void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Wall")
         {
             Debug.Log(true);
             Destroy(gameObject);
-            
+
+        }
+        if (other.tag == "Enemy")
+        {
+            WizardController wizard = other.GetComponent<WizardController>();
+
+            wizard.currentHP -= damage;
+
+            Destroy(gameObject);
         }
     }
+
 
 }

@@ -5,13 +5,13 @@ using UnityEngine;
 public class Electricity : Spell
 {
     public float moveSpeed = 0;
-    public int damage = 15;
+    public new int damage = 30;
     public float lifeTime = 1f;
     public bool flag = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        cooldown = 2.0f;
     }
 
     //Update is called once per frame
@@ -20,20 +20,26 @@ public class Electricity : Spell
         lifeTime -= Time.deltaTime;
         if (lifeTime < 0)
         {
-            Debug.Log(true);
+            //Debug.Log(true);
             Destroy(gameObject);
         }
         //Уничтожение объекта после истечения времени жизни
     }
-    private void OnTriggerEnter(Collider other)
+    public override void OnTriggerEnter(Collider other)
     {
-        if ((other.tag == "Player") && flag)
+        if (other.tag == "Wall")
         {
-            Debug.Log(true);
-            //other.hp-=damage;
-            //отнять хп у другого игрока;
+            return;
+        }
+        if ((other.tag == "Enemy") && flag)
+        {
             flag = false;
-            //Чтобы ХП отняла лишь один раз, но визуальный эффект остался
+        }
+        if (other.tag == "Enemy")
+        {
+            WizardController wizard = other.GetComponent<WizardController>();
+
+            wizard.currentHP -= damage;
 
         }
     }
