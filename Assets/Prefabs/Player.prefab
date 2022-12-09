@@ -36,9 +36,9 @@ RectTransform:
   m_Father: {fileID: 2174497879566492780}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 53.8, y: -18.4}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -5.2, y: -55.7}
   m_SizeDelta: {x: 72, y: 8.010002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5171535372764546643
@@ -679,6 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHP: 0
+  leftController: {fileID: 0}
   healthBar: {fileID: 7415494304885979186}
   attackSpellPrefab: {fileID: 4613098698363755859, guid: 9e7f98c988504654b8e51a9b92622343,
     type: 3}

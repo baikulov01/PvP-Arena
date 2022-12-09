@@ -340,6 +340,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &342197810 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1574835946452904042, guid: 94805765c5576da458e955bcdfe4c5ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 2002399256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &347737954 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7415494304885979186, guid: 94805765c5576da458e955bcdfe4c5ad,
@@ -1927,6 +1933,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 347737954}
+    - target: {fileID: 1780598552, guid: 94805765c5576da458e955bcdfe4c5ad, type: 3}
+      propertyPath: leftController
+      value: 
+      objectReference: {fileID: 342197810}
     - target: {fileID: 1780598552, guid: 94805765c5576da458e955bcdfe4c5ad, type: 3}
       propertyPath: firstSpellPrefab
       value: 

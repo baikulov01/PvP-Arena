@@ -8,6 +8,9 @@ public class WizardController : MonoBehaviour
 
     public int currentHP;
 
+    public Transform leftController;
+    public Transform rightController;
+
     //add health bar
     public HealthBar healthBar;
 
@@ -91,8 +94,9 @@ public class WizardController : MonoBehaviour
         if (attackSpellPrefab.GetComponent<Spell>().isActive)
         {
             currentAttackSpellCooldown = maxAttackSpellCooldown;
-            Transform coor = gameObject.transform;
-            Instantiate(attackSpellPrefab, new Vector3(coor.position.x, coor.position.y, coor.position.z), gameObject.transform.rotation);
+            Transform coorR = leftController.transform;
+            //Transform coorR = gameObject.transform;
+            Instantiate(attackSpellPrefab, new Vector3(coorR.position.x, coorR.position.y, coorR.position.z), coorR.transform.rotation);
         }
     }
     public void CastFirstSpell()
@@ -100,8 +104,8 @@ public class WizardController : MonoBehaviour
         if (firstSpellPrefab.GetComponent<Spell>().isActive)
         {
             currentFirstSpellCooldown = maxFirstSpellCooldown;
-            Transform coor = gameObject.transform;
-            Instantiate(firstSpellPrefab, new Vector3(coor.position.x, coor.position.y, coor.position.z), gameObject.transform.rotation);
+            Transform coorL = rightController.transform;
+            Instantiate(firstSpellPrefab, new Vector3(coorL.position.x, coorL.position.y, coorL.position.z), coorL.transform.rotation);
         }
     }
 }
