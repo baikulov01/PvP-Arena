@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WizardController : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class WizardController : MonoBehaviour
     public AudioSource Fattack4;
 
     //add health bar
-    public HealthBar healthBar;
+    public Slider healthBar;
 
 
     //public Spell attackSpell;
@@ -44,7 +45,7 @@ public class WizardController : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
-        healthBar.SetMaxHealth(maxHP);
+        healthBar.value = currentHP;
 
         //maxAttackSpellCooldown = attackSpell.cooldown;
         //maxFirstSpellCooldown = firstSpell.cooldown;
@@ -60,7 +61,7 @@ public class WizardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //healthBar.SetHealth(currentHP);
+        healthBar.value = currentHP;
         if (currentAttackSpellCooldown > 0.0f)
         {
             currentAttackSpellCooldown -= Time.deltaTime;
@@ -107,7 +108,9 @@ public class WizardController : MonoBehaviour
             currentAttackSpellCooldown = maxAttackSpellCooldown;
             Transform coorR = leftController.transform;
             //Transform coorR = gameObject.transform;
-            Instantiate(attackSpellPrefab, new Vector3(coorR.position.x, coorR.position.y, coorR.position.z), coorR.transform.rotation);
+            var fireball = Instantiate(attackSpellPrefab, new Vector3(coorR.position.x, coorR.position.y, coorR.position.z), coorR.transform.rotation);
+            Physics.IgnoreCollision(fireball.GetComponent<Collider>(),GetComponent<Collider>());
+
             if (flag2 == 0){
                 Fattack1.Play();
             }else if (flag2 == 1)
@@ -130,7 +133,8 @@ public class WizardController : MonoBehaviour
         {
             currentFirstSpellCooldown = maxFirstSpellCooldown;
             Transform coorL = rightController.transform;
-            Instantiate(firstSpellPrefab, new Vector3(coorL.position.x, coorL.position.y, coorL.position.z), coorL.transform.rotation);
+            var spell = Instantiate(firstSpellPrefab, new Vector3(coorL.position.x, coorL.position.y, coorL.position.z), coorL.transform.rotation);
+            Physics.IgnoreCollision(spell.GetComponent<Collider>(), GetComponent<Collider>());
             if (flag){
                 Eattack2.Play();
                 flag = false;

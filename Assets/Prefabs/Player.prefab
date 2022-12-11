@@ -1581,6 +1581,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &4978846456294875958
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573183554446048136}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1780598552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1602,7 +1616,7 @@ MonoBehaviour:
   Fattack2: {fileID: 400548046436544731}
   Fattack3: {fileID: 8817373530942842149}
   Fattack4: {fileID: 60126026399702806}
-  healthBar: {fileID: 7415494304885979186}
+  healthBar: {fileID: 0}
   attackSpellPrefab: {fileID: 4613098698363755859, guid: 9e7f98c988504654b8e51a9b92622343,
     type: 3}
   firstSpellPrefab: {fileID: 1344457166417818, guid: 0310b8628b5599c4295215fedba1a232,

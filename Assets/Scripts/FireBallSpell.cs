@@ -9,7 +9,7 @@ public class FireBallSpell : Spell
     // Start is called before the first frame update
     void Start()
     {
-        
+        castedBy = gameObject.name;
     }
 
     // Update is called once per frame
@@ -19,17 +19,18 @@ public class FireBallSpell : Spell
         
     }
 
-    public virtual void OnTriggerEnter(Collider other)
+    public override void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Wall")
+        //Debug.Log("ß = " + other.name + " " + castedBy);
+        if ( other.tag == "Wall")
         {
-            Debug.Log(true);
+            //Debug.Log(true);
             Destroy(gameObject);
 
         }
-        if (other.tag == "Enemy")
+        if ( other.tag == "Enemy"  || other.tag == "Player")
         {
-            WizardController wizard = other.GetComponent<WizardController>();
+            EnemyController wizard = other.GetComponent<EnemyController>();
 
             wizard.currentHP -= damage;
 

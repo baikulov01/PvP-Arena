@@ -12,6 +12,7 @@ public class Electricity : Spell
     void Start()
     {
         cooldown = 2.0f;
+        castedBy = gameObject.name;
     }
 
     //Update is called once per frame
@@ -27,17 +28,18 @@ public class Electricity : Spell
     }
     public override void OnTriggerEnter(Collider other)
     {
+
         if (other.tag == "Wall")
         {
             return;
         }
-        if ((other.tag == "Enemy") && flag)
+        if (other.tag == "Player" || (other.tag == "Enemy" ) && flag)
         {
             flag = false;
         }
-        if (other.tag == "Enemy")
+        if (other.tag == "Player" || other.tag == "Enemy")
         {
-            WizardController wizard = other.GetComponent<WizardController>();
+            EnemyController wizard = other.GetComponent<EnemyController>();
 
             wizard.currentHP -= damage;
 
