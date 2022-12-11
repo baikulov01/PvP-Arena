@@ -41,6 +41,7 @@ public class WizardController : MonoBehaviour
 
     public bool flag = true;
     public byte flag2 = 0;
+    public float soundColdown = 5.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +76,7 @@ public class WizardController : MonoBehaviour
             if (currentAttackSpellCooldown <= 0)
             {
                 CastAttackSpell();
+                soundColdown -= Time.deltaTime;
             }
         }
 
@@ -111,20 +113,27 @@ public class WizardController : MonoBehaviour
             var fireball = Instantiate(attackSpellPrefab, new Vector3(coorR.position.x, coorR.position.y, coorR.position.z), coorR.transform.rotation);
             Physics.IgnoreCollision(fireball.GetComponent<Collider>(),GetComponent<Collider>());
 
-            if (flag2 == 0){
-                Fattack1.Play();
-            }else if (flag2 == 1)
+            if (soundColdown <= 0)
             {
-                Fattack2.Play();
-            }else if (flag2 == 2)
-                Fattack3.Play();
-            else
-            {
-                Fattack4.Play();
-                flag2 = 0;
-                return;
+                if (flag2 == 0)
+                {
+                    Fattack1.Play();
+                }
+                else if (flag2 == 1)
+                {
+                    Fattack2.Play();
+                }
+                else if (flag2 == 2)
+                    Fattack3.Play();
+                else
+                {
+                    Fattack4.Play();
+                    flag2 = 0;
+                    return;
+                }
+                flag2++;
             }
-            flag2++;
+            
         }
     }
     public void CastFirstSpell()

@@ -13,7 +13,7 @@ public class Spell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        castedBy = gameObject.name;
+
     }
 
     // Update is called once per frame
@@ -25,14 +25,14 @@ public class Spell : MonoBehaviour
     public virtual void OnTriggerEnter(Collider other)
     {
         //Debug.Log("ß = " + other.name + " " + other.tag);
-        if (other.tag == "Player" || other.tag == "Enemy" )
-        {
-            EnemyController wizard = other.GetComponent<EnemyController>();
+        //if (other.tag == "Player" || other.tag == "Enemy" )
+        //{
+        //    EnemyController wizard = other.GetComponent<EnemyController>();
 
-            wizard.currentHP -= damage;
+        //    wizard.currentHP -= damage;
 
-            //Destroy(gameObject);
-        }
+        //    Destroy(gameObject);
+        //}
     }
 
 

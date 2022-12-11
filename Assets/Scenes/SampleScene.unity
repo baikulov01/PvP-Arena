@@ -2516,7 +2516,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936772792}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1850cd33cbc9ed4a93fee44d5a8eb14, type: 3}
   m_Name: 
@@ -2535,15 +2535,10 @@ MonoBehaviour:
     type: 3}
   firstSpellPrefab: {fileID: 1344457166417818, guid: 0310b8628b5599c4295215fedba1a232,
     type: 3}
-  secondSpellPrefab: {fileID: 0}
   currentAttackSpellCooldown: 0
   currentFirstSpellCooldown: 0
-  currentSecondSpellCooldown: 0
   maxAttackSpellCooldown: 1
   maxFirstSpellCooldown: 2
-  maxSecondSpellCooldown: 0
-  flag: 1
-  flag2: 0
 --- !u!1001 &1954514119
 PrefabInstance:
   m_ObjectHideFlags: 0
