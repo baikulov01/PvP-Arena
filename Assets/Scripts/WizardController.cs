@@ -42,10 +42,13 @@ public class WizardController : MonoBehaviour
 
     public bool flag = true;
     public byte flag2 = 0;
-    public float soundColdown = 5.0f;
+    public float currentSoundColdown;
+    public float maxSoundColdown = 5.0f;
+    public bool soundIsReady = true;
     // Start is called before the first frame update
     void Start()
     {
+        currentSoundColdown = maxSoundColdown;
         currentHP = maxHP;
         healthBar.value = currentHP;
 
@@ -76,9 +79,18 @@ public class WizardController : MonoBehaviour
         {
             if (currentAttackSpellCooldown <= 0)
             {
-                CastAttackSpell();
-                soundColdown -= Time.deltaTime;
+                CastAttackSpell();            
             }
+        }
+
+        if (!soundIsReady)
+        {
+            currentSoundColdown -= Time.deltaTime;
+        }   
+        if (currentSoundColdown <= 0 && !soundIsReady)
+        {
+            soundIsReady = true;
+            currentSoundColdown = maxSoundColdown;
         }
 
 
@@ -101,8 +113,6 @@ public class WizardController : MonoBehaviour
 
     }
 
-    //нужно добавить: когда мы получаем урон, обновлять health bar 
-    //healthBar.SetHealth(currentHP);
 
     public void CastAttackSpell()
     {
@@ -110,11 +120,10 @@ public class WizardController : MonoBehaviour
         {
             currentAttackSpellCooldown = maxAttackSpellCooldown;
             Transform coorR = leftController.transform;
-            //Transform coorR = gameObject.transform;
             var fireball = Instantiate(attackSpellPrefab, new Vector3(coorR.position.x, coorR.position.y, coorR.position.z), coorR.transform.rotation);
             Physics.IgnoreCollision(fireball.GetComponent<Collider>(),GetComponent<Collider>());
 
-            if (soundColdown <= 0)
+            if (soundIsReady)
             {
                 if (flag2 == 0)
                 {
@@ -125,7 +134,9 @@ public class WizardController : MonoBehaviour
                     Fattack2.Play();
                 }
                 else if (flag2 == 2)
+                {
                     Fattack3.Play();
+                }
                 else
                 {
                     Fattack4.Play();
@@ -133,8 +144,11 @@ public class WizardController : MonoBehaviour
                     return;
                 }
                 flag2++;
+                soundIsReady = false;
             }
             
+
+
         }
     }
     public void CastFirstSpell()
