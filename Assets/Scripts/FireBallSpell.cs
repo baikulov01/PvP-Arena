@@ -34,7 +34,6 @@ public class FireBallSpell : Spell
             EnemyController wizard = other.GetComponent<EnemyController>();
 
             wizard.currentHP -= damage;
-            aimlya.Play();
             Destroy(gameObject);
         } else if ( other.tag == "Player")
         {
