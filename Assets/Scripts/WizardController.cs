@@ -19,6 +19,7 @@ public class WizardController : MonoBehaviour
     public AudioSource Fattack3;
     public AudioSource Fattack4;
 
+
     //add health bar
     public Slider healthBar;
 

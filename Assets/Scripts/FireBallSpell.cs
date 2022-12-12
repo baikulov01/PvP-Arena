@@ -6,6 +6,7 @@ public class FireBallSpell : Spell
 {
     public float moveSpeed = 0.25f;
     public int damage = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +34,7 @@ public class FireBallSpell : Spell
             EnemyController wizard = other.GetComponent<EnemyController>();
 
             wizard.currentHP -= damage;
-
+            aimlya.Play();
             Destroy(gameObject);
         } else if ( other.tag == "Player")
         {
