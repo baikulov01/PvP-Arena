@@ -161,7 +161,7 @@ public class WizardController : MonoBehaviour
         if (attackSpellPrefab.GetComponent<Spell>().isActive)
         {
             currentAttackSpellCooldown = maxAttackSpellCooldown;
-            Transform coorR = leftController.transform;
+            Transform coorR = rightController.transform;
             var fireball = Instantiate(attackSpellPrefab, new Vector3(coorR.position.x, coorR.position.y, coorR.position.z), coorR.transform.rotation);
             Physics.IgnoreCollision(fireball.GetComponent<Collider>(),GetComponent<Collider>());
 
