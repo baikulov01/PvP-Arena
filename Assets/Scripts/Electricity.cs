@@ -5,7 +5,7 @@ using UnityEngine;
 public class Electricity : Spell
 {
     public float moveSpeed = 0;
-    public new int damage = 30;
+    public new int damage = 15;
     public float lifeTime = 1f;
     public bool flag = false;
     // Start is called before the first frame update
@@ -47,9 +47,24 @@ public class Electricity : Spell
         {
             WizardController wizard = other.GetComponent<WizardController>();
 
-            wizard.currentHP -= damage;
+            if (wizard.schieldIsCasting)
+            {
+                wizard.currentSchieldHP -= damage;
+            } else
+            {
+                wizard.currentHP -= damage;
+            }
+
+            
             
         }
+        //else if (other.tag == "Schield")
+        //{
+        //    WizardController schield = other.GetComponent<WizardController>();
+        //    schield.currentSchieldHP -= damage;
+        //    Debug.Log("schield");
+        //}
+
     }
 
 }

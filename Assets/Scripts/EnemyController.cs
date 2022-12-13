@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class EnemyController : MonoBehaviour
 {
     // Start is called before the first frame update
-    static int maxHP = 100;
+    static int maxHP = 200;
 
     public int currentHP;
 
@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
     //public float currentSecondSpellCooldown;
 
     public float maxAttackSpellCooldown = 1.0f;
-    public float maxFirstSpellCooldown = 2.0f;
+    public float maxFirstSpellCooldown = 3.0f;
     //public float maxSecondSpellCooldown;
 
 
@@ -72,7 +72,7 @@ public class EnemyController : MonoBehaviour
 
         if (currentAttackSpellCooldown <= 0)
         {
-            CastAttackSpell();
+            //CastAttackSpell();
         }
 
         if (currentFirstSpellCooldown > 0.0f)
@@ -111,7 +111,7 @@ public class EnemyController : MonoBehaviour
         {
             currentFirstSpellCooldown = maxFirstSpellCooldown;
             Transform coorL = gameObject.transform;
-            var spell =Instantiate(firstSpellPrefab, new Vector3(coorL.position.x, coorL.position.y, coorL.position.z), coorL.transform.rotation);
+            var spell = Instantiate(firstSpellPrefab, new Vector3(coorL.position.x, coorL.position.y, coorL.position.z), coorL.transform.rotation);
             Physics.IgnoreCollision(spell.GetComponent<Collider>(), GetComponent<Collider>());
 
         }

@@ -4925,7 +4925,7 @@ MonoBehaviour:
   damage: 0
   castedBy: 
   moveSpeed: 0
-  damage: 30
+  damage: 15
   lifeTime: 1
   flag: 0
 --- !u!65 &1926089518203043379

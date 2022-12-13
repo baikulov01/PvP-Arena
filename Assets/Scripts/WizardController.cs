@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class WizardController : MonoBehaviour
 {
-    static int maxHP=100;
+    static int maxHP=200;
 
     public int currentHP;
 
@@ -14,10 +14,18 @@ public class WizardController : MonoBehaviour
 
     public AudioSource Eattack1;
     public AudioSource Eattack2;
+    public AudioSource Eattack3;
+    public AudioSource Eattack4;
+    public AudioSource Eattack5;
+    public AudioSource Eattack6;
+    public AudioSource Eattack7;
+
     public AudioSource Fattack1;
     public AudioSource Fattack2;
     public AudioSource Fattack3;
     public AudioSource Fattack4;
+
+    public AudioSource Schield1;
 
 
     //add health bar
@@ -34,24 +42,26 @@ public class WizardController : MonoBehaviour
 
     public float currentAttackSpellCooldown;
     public float currentFirstSpellCooldown;
-    public float currentSecondSpellCooldown;
+    //public float currentSecondSpellCooldown;
 
     public float maxAttackSpellCooldown = 1.0f;
-    public float maxFirstSpellCooldown = 2.0f;
-    public float maxSecondSpellCooldown;
+    public float maxFirstSpellCooldown = 3.0f;
+    //public float maxSecondSpellCooldown;
 
-    public bool flag = true;
-    public byte flag2 = 0;
-    public float currentSoundColdown;
-    public float maxSoundColdown = 5.0f;
-    public bool soundIsReady = true;
+    public float maxSchieldHP = 100.0f;
+    public float currentSchieldHP;
+
+    public bool schieldIsCasting;
+    public bool schieldIsActive;
+
     // Start is called before the first frame update
     void Start()
     {
-        currentSoundColdown = maxSoundColdown;
+
         currentHP = maxHP;
         healthBar.value = currentHP;
 
+        currentSchieldHP = maxSchieldHP;
         //maxAttackSpellCooldown = attackSpell.cooldown;
         //maxFirstSpellCooldown = firstSpell.cooldown;
         //maxSecondSpellCooldown = secondSpell.cooldown;
@@ -83,16 +93,6 @@ public class WizardController : MonoBehaviour
             }
         }
 
-        if (!soundIsReady)
-        {
-            currentSoundColdown -= Time.deltaTime;
-        }   
-        if (currentSoundColdown <= 0 && !soundIsReady)
-        {
-            soundIsReady = true;
-            currentSoundColdown = maxSoundColdown;
-        }
-
 
         if (currentFirstSpellCooldown > 0.0f)
         {
@@ -109,7 +109,49 @@ public class WizardController : MonoBehaviour
                 CastFirstSpell();
             }
         }
+        //////////////////////////////////////////////
+        
 
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || Input.GetKeyDown(KeyCode.Q))
+        {
+            if (CastSecondSpell())
+            {
+                //GameObject schield = GameObject.FindGameObjectWithTag("Schield");
+                schieldIsCasting = true;
+            }
+            
+        }
+
+        if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger) || Input.GetKeyUp(KeyCode.Q))
+        {
+            GameObject schield = GameObject.FindGameObjectWithTag("Schield");
+            //schield.GetComponent<SchieldSpell>().isCasting = false;
+            schieldIsCasting = false;
+            Destroy(schield);
+        }
+
+        ////////////////////////////////////////
+        //GameObject schield = GameObject.FindGameObjectWithTag("Schield");
+
+        if (currentSchieldHP < maxSchieldHP && !schieldIsCasting)
+        {
+            currentSchieldHP += 4*Time.deltaTime;
+        }
+
+        if (currentSchieldHP <= 0)
+        {
+            schieldIsActive = false;
+            schieldIsCasting = false;
+            currentSchieldHP = 0;
+            Destroy(GameObject.FindGameObjectWithTag("Schield"));
+        }
+
+        if (currentSchieldHP >= maxSchieldHP * 0.2)
+        {
+            schieldIsActive = true;
+        }
+
+        //Debug.Log(currentSchieldHP);
 
     }
 
@@ -123,30 +165,25 @@ public class WizardController : MonoBehaviour
             var fireball = Instantiate(attackSpellPrefab, new Vector3(coorR.position.x, coorR.position.y, coorR.position.z), coorR.transform.rotation);
             Physics.IgnoreCollision(fireball.GetComponent<Collider>(),GetComponent<Collider>());
 
-            if (soundIsReady)
+
+            int rand = Random.Range(0, 3);
+            switch (rand)
             {
-                if (flag2 == 0)
-                {
+                case 0:
                     Fattack1.Play();
-                }
-                else if (flag2 == 1)
-                {
+                    break;
+                case 1:
                     Fattack2.Play();
-                }
-                else if (flag2 == 2)
-                {
+                    break;
+                case 2:
                     Fattack3.Play();
-                }
-                else
-                {
+                    break;
+                case 3:
                     Fattack4.Play();
-                    flag2 = 0;
-                    return;
-                }
-                flag2++;
-                soundIsReady = false;
+                    break;
+                default:
+                    break;
             }
-            
 
 
         }
@@ -159,16 +196,50 @@ public class WizardController : MonoBehaviour
             Transform coorL = rightController.transform;
             var spell = Instantiate(firstSpellPrefab, new Vector3(coorL.position.x, coorL.position.y, coorL.position.z), coorL.transform.rotation);
             Physics.IgnoreCollision(spell.GetComponent<Collider>(), GetComponent<Collider>());
-            if (flag){
-                Eattack2.Play();
-                flag = false;
-            }
-            else
+
+            int rand = Random.Range(0, 6);
+            switch (rand)
             {
-                Eattack1.Play();
-                flag = true;
+                case 0:
+                    Eattack1.Play();
+                    break;
+                case 1:
+                    Eattack2.Play();
+                    break;
+                case 2:
+                    Eattack3.Play();
+                    break;
+                case 3:
+                    Eattack4.Play();
+                    break;
+                case 4:
+                    Eattack5.Play();
+                    break;
+                case 5:
+                    Eattack6.Play();
+                    break;
+                case 6:
+                    Eattack7.Play();
+                    break;
+                default:
+                    break;
             }
             
         }
+    }
+
+    public bool CastSecondSpell()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (schieldIsActive && !schieldIsCasting)
+        {
+            var spell = Instantiate(secondSpellPrefab,
+                        new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z),
+                        gameObject.transform.rotation, player.transform);
+            Schield1.Play();
+            Physics.IgnoreCollision(spell.GetComponent<Collider>(), GetComponent<Collider>());
+            return true;
+        }
+        else return false;
     }
 }
