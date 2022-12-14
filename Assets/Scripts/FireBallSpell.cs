@@ -6,6 +6,7 @@ public class FireBallSpell : Spell
 {
     public float moveSpeed = 0.25f;
     public int damage = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class FireBallSpell : Spell
 
     public override void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
+        //Debug.Log(other.name);
         if ( other.tag == "Wall")
         {
             //Debug.Log(true);
@@ -33,16 +34,27 @@ public class FireBallSpell : Spell
             EnemyController wizard = other.GetComponent<EnemyController>();
 
             wizard.currentHP -= damage;
-
             Destroy(gameObject);
         } else if ( other.tag == "Player")
         {
             WizardController wizard = other.GetComponent<WizardController>();
-
-            wizard.currentHP -= damage;
+            if (wizard.schieldIsCasting)
+            {
+                wizard.currentSchieldHP -= damage;
+            }
+            else
+            {
+                wizard.currentHP -= damage;
+            }
 
             Destroy(gameObject);
-        }
+        } 
+        //else if (other.tag == "Schield")
+        //{
+        //    WizardController schield = other.GetComponent<WizardController>();
+        //    schield.currentSchieldHP -= damage;
+        //    Debug.Log("schield FB");
+        //}
 
 
 
