@@ -160,12 +160,6 @@ public class WizardController : MonoBehaviour
     {
         if (attackSpellPrefab.GetComponent<Spell>().isActive)
         {
-            currentAttackSpellCooldown = maxAttackSpellCooldown;
-            Transform coorR = rightController.transform;
-            var fireball = Instantiate(attackSpellPrefab, new Vector3(coorR.position.x, coorR.position.y, coorR.position.z), coorR.transform.rotation);
-            Physics.IgnoreCollision(fireball.GetComponent<Collider>(),GetComponent<Collider>());
-
-
             int rand = Random.Range(0, 3);
             switch (rand)
             {
@@ -184,6 +178,16 @@ public class WizardController : MonoBehaviour
                 default:
                     break;
             }
+
+            currentAttackSpellCooldown = maxAttackSpellCooldown;
+            Transform coorR = rightController.transform;
+            var fireball = Instantiate(attackSpellPrefab, new Vector3(coorR.position.x, coorR.position.y, coorR.position.z), coorR.transform.rotation);
+            Physics.IgnoreCollision(fireball.GetComponent<Collider>(),GetComponent<Collider>());
+            var schield = GameObject.FindGameObjectWithTag("Schield");
+            Physics.IgnoreCollision(fireball.GetComponent<Collider>(), schield.GetComponent<Collider>());
+
+
+            
 
 
         }

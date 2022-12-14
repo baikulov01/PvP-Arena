@@ -33,31 +33,17 @@ public class Electricity : Spell
         {
             return;
         }
-        if (other.tag == "Player" || (other.tag == "Enemy" ) && flag)
-        {
-            flag = false;
-        }
         if (other.tag == "Enemy")
         {
-            EnemyController wizard = other.GetComponent<EnemyController>();
+            Debug.Log(true);
+            EnemyController enemy = other.GetComponent<EnemyController>();
 
-            wizard.currentHP -= damage;
+            enemy.currentHP -= damage;
 
-        } else if (other.tag == "Player")
-        {
-            WizardController wizard = other.GetComponent<WizardController>();
-
-            if (wizard.schieldIsCasting)
-            {
-                wizard.currentSchieldHP -= damage;
-            } else
-            {
-                wizard.currentHP -= damage;
-            }
-
+        } 
             
             
-        }
+        
         //else if (other.tag == "Schield")
         //{
         //    WizardController schield = other.GetComponent<WizardController>();
