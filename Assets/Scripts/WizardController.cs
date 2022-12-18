@@ -234,7 +234,7 @@ public class WizardController : MonoBehaviour
 
     public bool CastSecondSpell()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("Camera");
         if (schieldIsActive && !schieldIsCasting)
         {
             var spell = Instantiate(secondSpellPrefab,

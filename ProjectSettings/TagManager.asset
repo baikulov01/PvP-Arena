@@ -9,6 +9,7 @@ TagManager:
   - RoomLight
   - EnemyPoints
   - Schield
+  - Camera
   layers:
   - Default
   - TransparentFX
