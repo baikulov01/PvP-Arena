@@ -154,12 +154,13 @@ public class WizardController : MonoBehaviour
             schieldIsActive = true;
         }
 
-        if(currentHP <= 0 && isDead)
+        if(currentHP <= 0)
         {
             isDead = true;
             gameManager.gameOver();
-            Debug.Log("Dead!");
+            Time.timeScale = 0;
         }
+
 
         //Debug.Log(currentSchieldHP);
 
