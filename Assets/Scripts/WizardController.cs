@@ -54,6 +54,9 @@ public class WizardController : MonoBehaviour
     public bool schieldIsCasting;
     public bool schieldIsActive;
 
+    private bool isDead;
+    public GameManagerScript gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -149,6 +152,13 @@ public class WizardController : MonoBehaviour
         if (currentSchieldHP >= maxSchieldHP * 0.2)
         {
             schieldIsActive = true;
+        }
+
+        if(currentHP <= 0 && isDead)
+        {
+            isDead = true;
+            gameManager.gameOver();
+            Debug.Log("Dead!");
         }
 
         //Debug.Log(currentSchieldHP);
