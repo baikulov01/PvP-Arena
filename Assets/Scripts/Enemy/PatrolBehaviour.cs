@@ -7,12 +7,13 @@ public class PatrolBehaviour : StateMachineBehaviour
     float timer;
     List<Transform> points = new List<Transform>();
     NavMeshAgent agent;
-
+    WizardController playerController;
     Transform player;
     float chaseRange = 10;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<WizardController>();
         timer = 0;
         Transform pointsObject = GameObject.FindGameObjectWithTag("EnemyPoints").transform;
         foreach (Transform t in pointsObject)
@@ -34,8 +35,10 @@ public class PatrolBehaviour : StateMachineBehaviour
         if (timer > 10)
             animator.SetBool("isPatrolling", false);
 
+        
+        
         float distance = Vector3.Distance(animator.transform.position, player.position);
-        if (distance < chaseRange)
+        if (distance < chaseRange && !playerController.inWall)
             animator.SetBool("isChasing", true);
 
     }

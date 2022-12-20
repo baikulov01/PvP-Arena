@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class WizardController : MonoBehaviour
 {
+    public bool inWall = false;
     static int maxHP=200;
 
     public int currentHP;
@@ -256,5 +257,19 @@ public class WizardController : MonoBehaviour
             return true;
         }
         else return false;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Wall")
+        {
+            inWall = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Wall")
+        {
+            inWall = false;
+        }
     }
 }

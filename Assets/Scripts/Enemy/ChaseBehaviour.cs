@@ -5,9 +5,10 @@ using UnityEngine.AI;
 
 public class ChaseBehaviour : StateMachineBehaviour
 {
+    WizardController playerController;
     NavMeshAgent agent;
     Transform player;
-    float attackRange = 4;
+    float attackRange = 3;
     float chaseRange = 10;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -15,13 +16,20 @@ public class ChaseBehaviour : StateMachineBehaviour
     {
         agent = animator.GetComponent<NavMeshAgent>();
         agent.speed = 4;
-
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<WizardController>();
         player = GameObject.FindGameObjectWithTag("Camera").transform;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        
+        if (playerController.inWall)
+        {
+            animator.SetBool("isChasing", false);
+            animator.SetBool("isPatrolling", true);
+            
+        }
         agent.SetDestination(player.position);
         float distance = Vector3.Distance(animator.transform.position, player.position);
         if (distance < attackRange)
@@ -29,7 +37,7 @@ public class ChaseBehaviour : StateMachineBehaviour
             animator.SetBool("isAttacking", true);
             //player.GetComponent<WizardController>().currentHP -= 10;
         }
-            
+
 
 
         

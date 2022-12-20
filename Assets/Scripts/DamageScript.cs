@@ -21,14 +21,18 @@ public class DamageScript : MonoBehaviour
         if (collision.tag == "Player")
         {
             WizardController player = GameObject.FindGameObjectWithTag("Player").GetComponent<WizardController>();
-            if (player.schieldIsCasting)
+            if(!player.inWall)
             {
-                player.currentSchieldHP -= damage;
+                if (player.schieldIsCasting)
+                {
+                    player.currentSchieldHP -= damage;
+                }
+                else
+                {
+                    player.currentHP -= 20;
+                }
             }
-            else
-            {
-                player.currentHP -= 20;
-            }
+            
         }
         
     }

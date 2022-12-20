@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IdleBehaviour : StateMachineBehaviour
 {
+    WizardController playerController;
     float timer;
     Transform player;
     float chaseRange = 10;
@@ -12,6 +13,7 @@ public class IdleBehaviour : StateMachineBehaviour
     {
         timer = 0;
         player = GameObject.FindGameObjectWithTag("Camera").transform;
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<WizardController>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -22,7 +24,7 @@ public class IdleBehaviour : StateMachineBehaviour
             animator.SetBool("isPatrolling", true);
 
         float distance = Vector3.Distance(animator.transform.position, player.position);
-        if (distance < chaseRange)
+        if (distance < chaseRange && !playerController.inWall)
             animator.SetBool("isChasing", true);
 
     }
