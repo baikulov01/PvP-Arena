@@ -10,15 +10,19 @@ public class SchieldSpell : Spell
     //public bool isCasting;
 
     // Start is called before the first frame update
+    GameObject player;
     void Start()
     {
         //currentSchieldHP = 60.0f;
         isActive = true;
+        player = GameObject.FindGameObjectWithTag("Camera");
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.position = player.transform.position;
+        transform.rotation = player.transform.rotation;
         //if (currentSchieldHP < maxSchieldHP && !isCasting)
         //{
         //    currentSchieldHP += Time.deltaTime;

@@ -57,6 +57,8 @@ public class WizardController : MonoBehaviour
 
     private bool isDead;
     public GameManagerScript gameManager;
+    //GameObject player;
+
 
     // Start is called before the first frame update
     void Start()
@@ -75,11 +77,13 @@ public class WizardController : MonoBehaviour
         //currentSecondSpellCooldown = maxSecondSpellCooldown;
         //Debug.Log(transform.position);
         //CastAttackSpell();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+         
         healthBar.value = currentHP;
         if (currentAttackSpellCooldown > 0.0f)
         {
@@ -155,7 +159,9 @@ public class WizardController : MonoBehaviour
             schieldIsActive = true;
         }
 
-        if(currentHP <= 0)
+       
+
+        if (currentHP <= 0)
         {
             isDead = true;
             gameManager.gameOver();
@@ -163,7 +169,20 @@ public class WizardController : MonoBehaviour
         }
 
 
-        //Debug.Log(currentSchieldHP);
+        if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger) && OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger) && Time.timeScale == 0)
+        {
+            gameManager.restart();
+        }
+
+        //if (Input.GetMouseButton(1) && Input.GetMouseButton(0) && Time.timeScale == 0)
+        //{
+        //    gameManager.restart();   
+        //}
+
+
+
+
+        Debug.Log(Time.timeScale);
 
     }
 

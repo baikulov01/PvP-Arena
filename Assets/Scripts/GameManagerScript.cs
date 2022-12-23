@@ -10,7 +10,8 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 1;
+
     }
 
     // Update is called once per frame
@@ -27,6 +28,6 @@ public class GameManagerScript : MonoBehaviour
     public void restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Debug.Log("Restart");
+       // Debug.Log("Restart");
     }
 }

@@ -21,6 +21,9 @@ public class EnemyController : MonoBehaviour
     //add health bar
     public Slider healthBar;
 
+    private bool isDead;
+    public GameManagerScript gameManager;
+
 
     //public Spell attackSpell;
     //public Spell firstSpell;
@@ -62,6 +65,13 @@ public class EnemyController : MonoBehaviour
         healthBar.value = currentHP;
 
         Physics.IgnoreCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>(), GetComponent<Collider>());
+        if (currentHP <= 0)
+        {
+            isDead = true;
+            gameManager.gameOver();
+            Time.timeScale = 0;
+        }
+
 
         //if (currentAttackSpellCooldown > 0.0f)
         //{
