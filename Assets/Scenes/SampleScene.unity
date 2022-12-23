@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.19591501, g: 0.23728395, b: 0.31093928, a: 1}
+  m_IndirectSpecularColor: {r: 0.19568676, g: 0.23700908, b: 0.31068566, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6742,6 +6742,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1573183554445748136, guid: 94805765c5576da458e955bcdfe4c5ad,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573183554445748136, guid: 94805765c5576da458e955bcdfe4c5ad,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1573183554446048132, guid: 94805765c5576da458e955bcdfe4c5ad,
         type: 3}
       propertyPath: m_TagString
@@ -6874,8 +6884,23 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: fe3888a92ab3e7f4c9304ac39fc59116, type: 3}
     - target: {fileID: 2649484590777792669, guid: 94805765c5576da458e955bcdfe4c5ad,
         type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649484590777792669, guid: 94805765c5576da458e955bcdfe4c5ad,
+        type: 3}
       propertyPath: m_Constraints
-      value: 126
+      value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649484590777792669, guid: 94805765c5576da458e955bcdfe4c5ad,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649484590777792669, guid: 94805765c5576da458e955bcdfe4c5ad,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3691480127539252203, guid: 94805765c5576da458e955bcdfe4c5ad,
         type: 3}
@@ -7027,8 +7052,7 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 59e5df6f7db699145a8f6de22627950f, type: 3}
-    m_RemovedComponents:
-    - {fileID: 2649484590777792669, guid: 94805765c5576da458e955bcdfe4c5ad, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94805765c5576da458e955bcdfe4c5ad, type: 3}
 --- !u!20 &2002399257 stripped
 Camera:
@@ -7166,7 +7190,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019805549}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c373ce2fa405a974b968c978019899c6, type: 3}
   m_Name: 
